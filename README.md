@@ -6,12 +6,23 @@ A powerful WHMCS addon module that adds game server management capabilities to y
 
 - 🎮 Dedicated game server product type
 - 🖼️ Image upload system for game banners
-- 🎥 YouTube video integration
+- 🎥 YouTube video integration (direct URL support)
 - 📝 Rich text descriptions and feature lists
 - 🛒 Custom cart interface
 - 💰 Flexible pricing options
 - 🔧 Configurable server options
 - 📱 Fully responsive design
+
+## Important URLs
+
+### Client Area
+- Main Game Servers List: `yourwhmcs.com/index.php?m=gameservers`
+- View Specific Game Server: `yourwhmcs.com/index.php?m=gameservers&action=view&id=X` (replace X with server ID)
+- Order Page: `yourwhmcs.com/cart.php?a=add&pid=X` (replace X with product ID)
+
+### Admin Area
+- Module Settings: `yourwhmcs.com/admin/configaddonmods.php`
+- Manage Game Servers: `yourwhmcs.com/admin/addonmodules.php?module=gameservers`
 
 ## Installation
 
@@ -22,8 +33,7 @@ A powerful WHMCS addon module that adds game server management capabilities to y
 4. Log in to your WHMCS admin area
 5. Go to Setup > Addon Modules
 6. Find "Game Servers" and click Activate
-7. Configure the module settings (YouTube API key if needed)
-8. Access the module from Addons > Game Servers in the admin area
+7. Access the module from Addons > Game Servers in the admin area
 
 ### Important Note
 Make sure the module is placed in the correct directory path. WHMCS modules must be in specific directories:
@@ -31,6 +41,23 @@ Make sure the module is placed in the correct directory path. WHMCS modules must
 - Payment Gateways: `modules/gateways/`
 - Server Modules: `modules/servers/`
 - Registrar Modules: `modules/registrars/`
+
+## Recent Changes
+
+### Version 1.1.0
+- Simplified YouTube video integration
+  - Now accepts full YouTube URLs instead of requiring video IDs
+  - Supports both standard (youtube.com/watch?v=) and short (youtu.be/) URLs
+  - Removed YouTube API key requirement
+- Fixed template issues
+  - Updated to use object notation instead of array notation
+  - Improved error handling in templates
+  - Enhanced responsive design
+- Improved pricing display
+  - Streamlined order button
+  - Simplified pricing plans layout
+- Added proper directory structure documentation
+- Updated installation instructions with correct paths
 
 ## Usage
 
@@ -51,7 +78,7 @@ Make sure the module is placed in the correct directory path. WHMCS modules must
    - Add description
    - List features (HTML supported)
    - Upload banner image or provide image URL
-   - Add YouTube video ID (optional)
+   - Add YouTube video URL (full URL supported)
 4. Click Save
 
 ### Client Area Features
@@ -75,7 +102,7 @@ Your clients will see:
 ```
 gameservers/
 ├── README.md
-├── gameservers.php          # Main plugin file
+├── gameservers.php          # Main module file
 ├── includes/
 │   ├── manage.php          # Admin management interface
 │   ├── overview.php        # Admin overview page
@@ -94,40 +121,16 @@ gameservers/
 - GD Library (for image processing)
 - Write permissions for the uploads directory
 
-## Security Features
-
-- Secure image upload system
-- File type validation
-- File size limits
-- XSS protection
-- CSRF protection (via WHMCS)
-
-## Customization
-
-The plugin uses Bootstrap 4 and modern CSS for styling. You can customize the appearance by:
-
-1. Editing the template files in the `templates` directory
-2. Modifying the CSS within each template
-3. Adding custom JavaScript as needed
-
 ## Support
 
-For support, feature requests, or bug reports, please contact us through:
-- Our support ticket system
-- Email: your@email.com
-- Documentation: [Your Documentation URL]
+For support, feature requests, or bug reports, please contact:
+- Email: support@gnzserver.com
+- Website: https://gnzserver.com
 
 ## License
 
-[Your License Information]
-
-## Version History
-
-- 1.0.0 - Initial release
-  - Basic game server management
-  - Image upload system
-  - Custom cart interface
+Copyright (c) 2024 GNZServer. All rights reserved.
 
 ## Credits
 
-Developed by [Your Company/Name]
+Developed by Goatboy @ GNZServer
