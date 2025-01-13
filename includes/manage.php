@@ -111,10 +111,10 @@ if ($gameId) {
             </div>
             
             <div class="form-group">
-                <label>YouTube Video ID</label>
+                <label>YouTube Video URL</label>
                 <input type="text" name="youtube_video" class="form-control"
                     value="<?php echo $gameServer ? htmlspecialchars($gameServer->youtube_video) : ''; ?>">
-                <small class="form-text text-muted">Enter the YouTube video ID (e.g., dQw4w9WgXcQ)</small>
+                <small class="form-text text-muted">Enter the full YouTube video URL (e.g., https://www.youtube.com/watch?v=dQw4w9WgXcQ)</small>
             </div>
             
             <div class="form-group">

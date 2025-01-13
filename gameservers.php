@@ -4,49 +4,57 @@ if (!defined("WHMCS")) {
     die("This file cannot be accessed directly");
 }
 
+use WHMCS\Database\Capsule;
+
 function gameservers_config() {
     return [
         'name' => 'Game Servers',
         'description' => 'Plugin for managing and displaying game server products',
         'version' => '1.0',
-        'author' => 'Your Company',
-        'fields' => [
-            'youtube_api_key' => [
-                'FriendlyName' => 'YouTube API Key',
-                'Type' => 'text',
-                'Size' => '50',
-                'Description' => 'Enter your YouTube API key for video embeds',
-            ],
-        ]
+        'author' => 'Goatboy',
+        'language' => 'english'
     ];
 }
 
 function gameservers_activate() {
-    // Create custom tables
-    $query = "CREATE TABLE IF NOT EXISTS `mod_gameservers` (
-        `id` int(11) NOT NULL AUTO_INCREMENT,
-        `product_id` int(11) NOT NULL,
-        `game_name` varchar(255) NOT NULL,
-        `description` text NOT NULL,
-        `features` text NOT NULL,
-        `youtube_video` varchar(255),
-        `banner_image` varchar(255),
-        PRIMARY KEY (`id`)
-    )";
-    
-    full_query($query);
-    
-    return [
-        'status' => 'success',
-        'description' => 'Game Servers plugin has been activated successfully.',
-    ];
+    try {
+        if (!Capsule::schema()->hasTable('mod_gameservers')) {
+            Capsule::schema()->create('mod_gameservers', function ($table) {
+                $table->increments('id');
+                $table->integer('product_id');
+                $table->string('game_name');
+                $table->text('description');
+                $table->text('features');
+                $table->string('youtube_video')->nullable();
+                $table->string('banner_image')->nullable();
+                $table->timestamps();
+            });
+        }
+        return [
+            'status' => 'success',
+            'description' => 'Game Servers module has been activated successfully.',
+        ];
+    } catch (\Exception $e) {
+        return [
+            'status' => "error",
+            'description' => 'Could not create game servers table: ' . $e->getMessage(),
+        ];
+    }
 }
 
 function gameservers_deactivate() {
-    return [
-        'status' => 'success',
-        'description' => 'Game Servers plugin has been deactivated successfully.',
-    ];
+    try {
+        // Don't drop the table on deactivation to preserve data
+        return [
+            'status' => 'success',
+            'description' => 'Game Servers module has been deactivated successfully.',
+        ];
+    } catch (\Exception $e) {
+        return [
+            'status' => "error",
+            'description' => 'Could not deactivate module: ' . $e->getMessage(),
+        ];
+    }
 }
 
 function gameservers_output($vars) {

@@ -1,6 +1,6 @@
-# WHMCS Game Servers Plugin
+# WHMCS Game Servers Module
 
-A powerful WHMCS plugin that adds game server management capabilities to your hosting business. This plugin creates a beautiful, modern interface for selling game server hosting services with customizable product options, image galleries, and YouTube video integration.
+A powerful WHMCS addon module that adds game server management capabilities to your hosting business. This module creates a beautiful, modern interface for selling game server hosting services with customizable product options, image galleries, and YouTube video integration.
 
 ## Features
 
@@ -15,12 +15,22 @@ A powerful WHMCS plugin that adds game server management capabilities to your ho
 
 ## Installation
 
-1. Download the plugin files
+1. Download the module files
 2. Upload the `gameservers` folder to your WHMCS installation's `modules/addons` directory
-3. Log in to your WHMCS admin area
-4. Go to Setup > Addon Modules
-5. Find "Game Servers" and click Activate
-6. Configure the plugin settings (YouTube API key if needed)
+   - The final path should be: `your-whmcs-path/modules/addons/gameservers/`
+3. Make sure the `uploads` directory has write permissions (chmod 755 or 775)
+4. Log in to your WHMCS admin area
+5. Go to Setup > Addon Modules
+6. Find "Game Servers" and click Activate
+7. Configure the module settings (YouTube API key if needed)
+8. Access the module from Addons > Game Servers in the admin area
+
+### Important Note
+Make sure the module is placed in the correct directory path. WHMCS modules must be in specific directories:
+- Addon Modules: `modules/addons/`
+- Payment Gateways: `modules/gateways/`
+- Server Modules: `modules/servers/`
+- Registrar Modules: `modules/registrars/`
 
 ## Usage
 

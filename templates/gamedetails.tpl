@@ -8,7 +8,13 @@
                     {if $game.youtube_video}
                         <div class="video-container mb-4">
                             <iframe width="100%" height="400" 
-                                src="https://www.youtube.com/embed/{$game.youtube_video}" 
+                                src="https://www.youtube.com/embed/{if strpos($game.youtube_video, 'watch?v=')}
+                                    {$game.youtube_video|regex_replace:'/.*watch\?v=([^&]*).*/':'$1'}
+                                {elseif strpos($game.youtube_video, 'youtu.be/')}
+                                    {$game.youtube_video|regex_replace:'/.*youtu.be\/([^?]*).*/':'$1'}
+                                {else}
+                                    {$game.youtube_video}
+                                {/if}" 
                                 frameborder="0" 
                                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
                                 allowfullscreen>
